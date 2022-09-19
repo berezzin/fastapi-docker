@@ -27,12 +27,14 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
+    volumes:
+      - ./:/app/
     networks:
       - custom
     depends_on:
       - mongo_db
       - postgres_db
-
+    restart: on-failure
 
   # database service
   mongo_db:
